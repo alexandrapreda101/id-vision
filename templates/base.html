@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Vision</title>
+    <link rel="eye-black" href="static/images/1611-black.png">
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/1611-black.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="static/images/icon.png" height="80"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/despre">Despre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pagina_mea">Pagina Mea</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Ieși din cont</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Acasă</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/despre">Despre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/inregistrare">Înregistrare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/autentificare">Autentificare</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock navbar %}
+
+    {% block bodyblock %}
+
+
+    {% endblock %}
+
+    {% block footer %}
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="static/images/icon_white.png" height="100" alt="">
+                    <p>+40 770 616 830</p>
+                    <p>predaalexandra18@stud.ase.ro</p>
+                    <p>București, România</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>PROIECT LICENTA 2021</h5>
+                    <hr class="light">
+                    <p>Preda Alexandra Maria</p>
+                    <p>București, România</p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+
+</body>
+
+</html>

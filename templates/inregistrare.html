@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block bodyblock %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% elif category =='success' %}
+<div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+    <h1 align="center">Înregistrare</h1>
+    <div class="form-group">
+        <label for="nume">Nume</label>
+        <input type="nume" name="nume" id="nume" class="form-control" placeholder="Introduceți numele">
+    </div>
+    <div class="form-group">
+        <label for="prenume">Prenume</label>
+        <input type="prenume" name="prenume" id="prenume" class="form-control" placeholder="Introduceți prenumele">
+    </div>
+    <div class="form-group">
+        <label for="cnp">CNP</label>
+        <input type="password" name="cnp" id="cnp" class="form-control" placeholder="Introduceți CNP-ul">
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-outline-dark">Submit</button>
+</form>
+
+{% endblock bodyblock %}
+
+{% block footer %}{% endblock footer %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+
+<div class="jumbotron">
+    <form method="POST">
+        <div class="form-group">
+            <label for="cnp">Introduceți CNP-ul</label>
+            <input type="cnp" name="cnp" id="cnp" class="form-control" placeholder="CNP">
+        </div>
+        <br />
+        <input type="submit" class="btn btn-outline-dark" name="submit_button" value="Submit">
+    </form>
+</div>
+
+{% endblock %}
+
+{% block footer %}{% endblock footer %}

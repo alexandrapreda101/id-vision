@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block bodyblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% elif category =='success' %}
+<div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+</br>
+<h1 align=center>Pagina mea</h1>
+</br>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Informațiile mele</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Nume</th>
+            <td>{{user.nume}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Prenume</th>
+            <td>{{user.prenume}}</td>
+        </tr>
+        <tr>
+            <th scope="row">CNP</th>
+            <td colspan="2">{{user.cnp}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Serie</th>
+            <td colspan="2">{{user.serie}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Loc Nastere</th>
+            <td colspan="2">{{user.loc_nastere}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Domiciliu</th>
+            <td colspan="2">{{user.domiciliu}}</td>
+        </tr>
+        <tr>
+            <th scope="row">Centru emitent și data expirării</th>
+            <td colspan="2">{{user.emis_expirare}}</td>
+        </tr>
+
+    </tbody>
+</table>
+</br>
+<div style="text-align: center">
+    <form action="#" method="POST">
+        <input type="submit" id="delete" name="delete" value="Stergere cont" class="btn btn-danger">
+    </form>
+    <br>
+    <a class="btn btn-outline-warning " href="{{url_for('modificare')}}" role="button">Modificare informații</a>
+    <br>
+</div>
+{% endblock bodyblock %}

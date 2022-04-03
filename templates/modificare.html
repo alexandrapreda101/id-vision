@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block bodyblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% elif category =='success' %}
+<div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+</br>
+<h1 align=center>Modificare</h1>
+</br>
+
+<form class="form-group" method="POST">
+    <div class="form-group">
+        <label for="nume" class="m-2">Nume</label>
+        <input type="nume" name="nume" class="form-control m-2" id="nume" value='{{user.nume}}'>
+    </div>
+    <div class="form-group">
+        <label for="prenume" class="m-2">Prenume</label>
+        <input type="prenume" name="prenume" class="form-control m-2" id="prenume" value='{{user.prenume}}'>
+    </div>
+    <div class="form-group">
+        <label for="cnp" class="m-2">CNP</label>
+        <input type="cnp" name="cnp" class="form-control m-2" id="cnp" value='{{user.cnp}}'>
+    </div>
+    <div class="form-group">
+        <label for="serie" class="m-2">Serie</label>
+        <input type="serie" name="serie" class="form-control m-2" id="serie" value='{{user.serie}}'>
+    </div>
+    <div class="form-group">
+        <label for="loc_nastere" class="m-2">Loc nastere</label>
+        <input type="loc_nastere" name="loc_nastere" class="form-control m-2" id="loc_nastere"
+            value='{{user.loc_nastere}}'>
+    </div>
+    <div class="form-group">
+        <label for="domiciliu" class="m-2">Domiciliu</label>
+        <input type="domiciliu" name="domiciliu" class="form-control m-2" id="domiciliu" value='{{user.domiciliu}}'>
+    </div>
+    <div class="form-group">
+        <label for="centru" class="m-2">Centru emitent și data expirării</label>
+        <input type="centru" name="centru" class="form-control m-2" id="centru" value='{{user.emis_expirare}}'>
+    </div>
+
+    <button type="submit" class="btn btn-primary m-2">Submit</button>
+</form>
+
+
+
+
+
+</div>
+
+
+{% endblock bodyblock %}

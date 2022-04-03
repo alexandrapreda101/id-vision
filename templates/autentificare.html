@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block bodyblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% elif category =='success' %}
+<div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+    <h1 align="center">Autentificare</h1>
+    <div class="form-group">
+        <label for="numeutilizator">Numele de utilizator</label>
+        <input type="numeutilizator" name="numeutilizator" id="numeutilizator" class="form-control"
+            placeholder="Introduceți numele de utilizator">
+    </div>
+    <div class="form-group">
+        <label for="parola">Parola</label>
+        <input type="password" name="parola" id="parola" class="form-control" placeholder="Introduceți parola">
+    </div>
+    <br />
+    <input type="submit" class="btn btn-outline-dark" name="submit_button" value="Submit">
+    <input type="submit" class="btn btn-link" name="submit_button" value="Ati uitat parola?">
+</form>
+
+{% endblock bodyblock %}
+
+{% block footer %}{% endblock footer %}

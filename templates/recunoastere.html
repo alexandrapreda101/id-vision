@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block bodyblock %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<div class="alert alert-danger alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% elif category =='success' %}
+<div class="alert alert-success alter-dismissable fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<br>
+<h1 align="center">Recunoaștere facială și achiziție de date</h1>
+<br>
+{% if not fileupload %}
+<div class="container">
+    <div class="content">
+        <br>
+        <h3></h3>
+    </div>
+    <div>
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <h5 class="semi-bold-600">
+                Încărcați documentul!
+            </h5>
+            <input type="file" id="upload" name="image" required="true">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+</div>
+{% endif %}
+
+{% if fileupload %}
+<div class="container">
+    <p class="semi-bold-600">
+        Identitate confirmată!
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{url_for('static',filename='uploads/' ) }}{{ img_name }} " alt="nothing" width="{{width}}"
+                height="300">
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+
+    <div style="text-align: center">
+        <br>
+        <a class="button btn rounded-pill btn-outline-dark " href=" {{url_for('credentiale')}}"
+            role="button">Continuă</a>
+    </div>
+</div>
+{% endif %}
+
+
+
+{% endblock bodyblock %}
+
+{% block footer %}{% endblock footer %}
